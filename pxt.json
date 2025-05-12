@@ -1,0 +1,29 @@
+{
+    "name": "Ping-Pong for 1",
+    "description": "",
+    "dependencies": {
+        "core": "*",
+        "v2": "*",
+        "funk": "*"
+    },
+    "files": [
+        "main.blocks",
+        "main.ts",
+        "README.md"
+    ],
+    "testFiles": [
+        "test.ts"
+    ],
+    "targetVersions": {
+        "branch": "v7.0.3",
+        "tag": "v7.0.3",
+        "commits": "https://github.com/microsoft/pxt-calliope/commits/283622410ab91b26f46d68145d9ea311cb8e91dd",
+        "target": "7.0.3",
+        "pxt": "10.2.39",
+        "targetId": "calliopemini"
+    },
+    "supportedTargets": [
+        "calliopemini"
+    ],
+    "preferredEditor": "blocksprj"
+}
