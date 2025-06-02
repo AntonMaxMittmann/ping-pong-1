@@ -1,21 +1,26 @@
-let ball: game.LedSprite = null
-let schlaeger: game.LedSprite = null
-let x_position = 0
 radio.onReceivedNumber(function (receivedNumber) {
-    ball = game.createSprite(receivedNumber, 0)
-    basic.pause(500)
-    for (let index = 0; index < 4; index++) {
-        ball.change(LedSpriteProperty.Y, 1)
-        basic.pause(500)
-    }
-    if (schlaeger.get(LedSpriteProperty.X) == ball.get(LedSpriteProperty.X)) {
-        music.playTone(988, music.beat(BeatFraction.Whole))
-        posTest()
+    if (receivedNumber == 1) {
+        anzahl_runden += 1
+        gewinne_1 += 1
+        start()
     } else {
-        music.playMelody("C5 B A G F E D C ", 391)
-        basic.showString("You lose!")
-        ball.delete()
-        schlaeger.delete()
+        ball = game.createSprite(receivedNumber, 0)
+        basic.pause(500)
+        for (let index = 0; index < 4; index++) {
+            ball.change(LedSpriteProperty.Y, 1)
+            basic.pause(500)
+        }
+        if (schlaeger.get(LedSpriteProperty.X) == ball.get(LedSpriteProperty.X)) {
+            music.playTone(988, music.beat(BeatFraction.Whole))
+            posTest()
+        } else {
+            music.playMelody("C5 B A G F E D C ", 391)
+            anzahl_runden += 1
+            gewinne_2 += 1
+            ball.delete()
+            schlaeger.delete()
+            start()
+        }
     }
 })
 input.onButtonEvent(Button.A, input.buttonEventClick(), function () {
@@ -54,3 +59,20 @@ function start () {
         radio.sendNumber(x_position)
     }
 }
+let x_position = 0
+let gewinne_2 = 0
+let schlaeger: game.LedSprite = null
+let ball: game.LedSprite = null
+let gewinne_1 = 0
+let anzahl_runden = 0
+let gewinne = 0
+basic.forever(function () {
+    if (anzahl_runden == 3) {
+        if (gewinne_1 > gewinne_2) {
+            basic.showString("✔!")
+        } else {
+            radio.sendNumber(2)
+            basic.showString("❌!")
+        }
+    }
+})
