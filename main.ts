@@ -12,8 +12,8 @@ radio.onReceivedNumber(function (receivedNumber) {
         music.playTone(988, music.beat(BeatFraction.Whole))
         posTest()
     } else {
-        basic.showString("You lose!")
         music.playMelody("C5 B A G F E D C ", 391)
+        basic.showIcon(IconNames.Sad, 1000)
         ball.delete()
         schlaeger.delete()
     }
