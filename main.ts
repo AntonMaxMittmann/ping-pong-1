@@ -9,9 +9,11 @@ radio.onReceivedNumber(function (receivedNumber) {
         basic.pause(500)
     }
     if (schlaeger.get(LedSpriteProperty.X) == ball.get(LedSpriteProperty.X)) {
+        music.playTone(988, music.beat(BeatFraction.Whole))
         posTest()
     } else {
-        basic.showString("lost!")
+        basic.showString("You lose!")
+        music.playMelody("C5 B A G F E D C ", 391)
         ball.delete()
         schlaeger.delete()
     }
