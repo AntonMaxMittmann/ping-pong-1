@@ -10,7 +10,16 @@ radio.onReceivedNumber(function (receivedNumber) {
             . . . . #
             `)
         counter += 1
-        start()
+        if (counter == 3) {
+            radio.sendNumber(100)
+            basic.showIcon(IconNames.Happy, 1000)
+            basic.clearScreen()
+        } else {
+            start()
+        }
+    } else if (receivedNumber == 100) {
+        basic.showIcon(IconNames.Sad, 1000)
+        basic.clearScreen()
     } else {
         ball = game.createSprite(receivedNumber, 0)
         basic.pause(500)
@@ -68,3 +77,4 @@ let x_position = 0
 let schlaeger: game.LedSprite = null
 let ball: game.LedSprite = null
 let counter = 0
+counter = 0
